@@ -1,7 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
-
 import cors from "cors";
+
+import { authRouter } from "./routes/auth.js";
+import { userRouter } from "./routes/user.js";
 
 const app = express();
 
@@ -14,6 +16,7 @@ app.get("/", (request, response) => {
   return response.status(200).json({ message: "Fonsi!" });
 });
 
-app.listen(3000);
+app.use("/auth", authRouter);
+app.use("/user", userRouter);
 
 export default app;
