@@ -4,6 +4,7 @@ import cors from "cors";
 
 import { authRouter } from "./routes/auth.js";
 import { userRouter } from "./routes/user.js";
+import { foodRouter } from "./routes/food.js";
 
 const app = express();
 
@@ -18,5 +19,6 @@ app.get("/", (request, response) => {
 
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
+app.use("/food", foodRouter);
 
 export default app;

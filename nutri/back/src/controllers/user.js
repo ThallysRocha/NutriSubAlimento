@@ -44,5 +44,26 @@ export default class UserController {
                 .status(500)
                 .json({ message: "Something went wrong with the server", error });
         }
-    }
+    };
+    editUser = async (request, response) => {
+        try{
+            if(await User.findOne({ _id: request.userId})){
+            const body = request.body;
+            //delete body.password;
+            delete body.createdAt;
+            delete body._id;
+            await User.updateOne({ _id: request.userId }, body);
+            return response.send(body);
+            }else
+                return response
+                    .status(404)
+                    .json({ error: "User not found" });
+        }
+        catch(error){
+            return response
+                .status(500)
+                .json({ message: "Something went wrong with the server", error });
+        }
+        
+    };
 }
