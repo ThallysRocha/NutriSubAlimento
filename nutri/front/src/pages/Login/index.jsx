@@ -16,7 +16,7 @@ const Login = () => {
         handleLogin(email, password);
     };
     useEffect(() => {
-        if (loggedUserId) navigate("/swapFood");
+        if (!!loggedUserId) navigate("/swapFood");
     }, [loggedUserId, navigate]);
 
     return(
