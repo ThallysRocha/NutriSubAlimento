@@ -6,17 +6,19 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { useLogin } from "../../contexts/Login";
 const SwapFood = () => {
+    const admins = ['6539ac2fc0937416b496a323']
     const { loggedUserId, handleLogout } = useLogin();
     const [foods, setFoods] = useState([]);
     const [options, setOptions] = useState([]);
+    const [isAdmin, setIsAdmin] = useState(false);
     useEffect(() => {
         const getFoods = async () => {
             try{
                 const response = await api.get("/food");
                 setFoods(response.data.foods);
-                foods.map((food,index,foods) => (
-                    console.log(food.name,index)
-                ));
+                // foods.map((food,index,foods) => (
+                //     console.log(food.name,index)
+                // ));
             } catch (error) {
                 console.log(error);
                 alert("Erro ao buscar comidas");
@@ -26,8 +28,13 @@ const SwapFood = () => {
             getFoods();
             
         }
-    }, [loggedUserId]);
-
+        // console.log(loggedUserId,foods.length,foods);
+        // console.log(options);
+        
+    }, [loggedUserId,foods.length,foods,options]);
+    if(admins.includes(loggedUserId) && !isAdmin){
+        setIsAdmin(true);
+    }
         if(foods.length > options.length){
             const optionsAux = [...options];
             foods.map((food,index) => (
@@ -36,7 +43,7 @@ const SwapFood = () => {
             );
             setOptions(optionsAux);
         }
-    const [isAdmin, setIsAdmin] = useState(false);
+    
     
     return (
         <div>

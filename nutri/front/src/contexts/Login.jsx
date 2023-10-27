@@ -12,8 +12,8 @@ export const LoginProvider = ({ children }) => {
 
     const handleLogout = useCallback(() => {
         localStorage.clear();
-        setLoggedUserId(null);
-        setAuthToken(null);
+        setLoggedUserId("");
+        setAuthToken("");
         navigate("/login");
     }, [navigate]);
 
@@ -28,14 +28,15 @@ export const LoginProvider = ({ children }) => {
               },
             });
             const { userId } = response.data;
+            // console.log(userId);
             setAuthToken(token);
             setLoggedUserId(userId);
           } catch (error) {
             handleLogout();
           }
         };
-        validateLogin();
-      }, []);
+          validateLogin();
+      }, [handleLogout]);
 
     const handleLogin = useCallback(async (email, password) => {
         try {
@@ -55,6 +56,7 @@ export const LoginProvider = ({ children }) => {
     const value = useMemo(
         () => ({
             loggedUserId,
+            setLoggedUserId,
             handleLogin,
             handleLogout,
         }),
