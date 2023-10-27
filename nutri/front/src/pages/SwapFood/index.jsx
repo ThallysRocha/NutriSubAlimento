@@ -27,7 +27,7 @@ const SwapFood = () => {
             
         }
     }, [loggedUserId]);
-    
+
         if(foods.length > options.length){
             const optionsAux = [...options];
             foods.map((food,index) => (
@@ -36,15 +36,12 @@ const SwapFood = () => {
             );
             setOptions(optionsAux);
         }
+    const [isAdmin, setIsAdmin] = useState(false);
+    
     return (
         <div>
-            <Link to="/insertFood">Inserir Comida</Link>
-            
-            <select name="Comidas" id="foods">
-                {foods.length?(foods.map((food,i) => (                    
-                    <option key={i} value={food.id}>{food.name}</option>
-                ))):(<option value={""}>{"Nenhuma comida encontrada"}</option>)}
-            </select>
+            {isAdmin?(<Link to="/insertFood">Inserir Comida</Link>):null}
+            <h1>SwapFood</h1>
             <Autocomplete
                     disablePortal
                     id="combo-box-demo"

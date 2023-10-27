@@ -28,6 +28,7 @@ export const adminMiddleware = async (request, response, next) => {
   let isAdmin = false;
   
   const adminIds = process.env.ADMIN_IDS.split(',').map((id) => id.replace('"', '').replace('"', ''));
+  console.log(adminIds);
   adminIds.forEach((adminId) => {
     if (request.userId == adminId && !isAdmin) {
       
