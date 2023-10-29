@@ -24,14 +24,14 @@ const SwapFood = () => {
                 alert("Erro ao buscar comidas");
             }            
         };
-        if (loggedUserId && foods.length === 0){
+        if (loggedUserId){
             getFoods();
             
         }
         // console.log(loggedUserId,foods.length,foods);
         // console.log(options);
         
-    }, [loggedUserId,foods.length,foods,options]);
+    }, [loggedUserId]);
     if(admins.includes(loggedUserId) && !isAdmin){
         setIsAdmin(true);
     }

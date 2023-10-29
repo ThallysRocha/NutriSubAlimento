@@ -38,8 +38,10 @@ export const LoginProvider = ({ children }) => {
             handleLogout();
           }
         };
+        if (!loggedUserId)
           validateLogin();
-      }, [handleLogout]);
+      }, [loggedUserId]);
+      
 
     const handleLogin = useCallback(async (email, password) => {
         try {
