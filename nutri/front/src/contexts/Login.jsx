@@ -22,15 +22,18 @@ export const LoginProvider = ({ children }) => {
           try {
             const token = localStorage.getItem("token");
             if (!token) handleLogout();
-            const response = await api.post("/auth/validate-token", undefined, {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            });
-            const { userId } = response.data;
-            // console.log(userId);
-            setAuthToken(token);
-            setLoggedUserId(userId);
+            else{
+              const response = await api.post("/auth/validate-token", undefined, {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              });
+              const { userId } = response.data;
+              // console.log(userId);
+              setAuthToken(token);
+              setLoggedUserId(userId);
+
+            }
           } catch (error) {
             handleLogout();
           }
@@ -48,6 +51,9 @@ export const LoginProvider = ({ children }) => {
             setLoggedUserId(userId);
             navigate("/swapFood");
         } catch (error) {
+          if (error.response.data.error === "Invalid credentials")
+            alert("Credenciais inválidas");
+          else
             alert("Erro ao logar");
         }
     }, [navigate]);

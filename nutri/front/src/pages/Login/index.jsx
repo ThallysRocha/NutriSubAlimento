@@ -13,10 +13,13 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        if (!email || !password) return;
+
         handleLogin(email, password);
     };
     useEffect(() => {
         if (!!loggedUserId) navigate("/swapFood");
+        
     }, [loggedUserId, navigate]);
 
     return(
