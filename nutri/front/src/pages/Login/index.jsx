@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useLogin } from "../../contexts/Login";
+import "./styles.css";
+import Header from "../../components/Header";
+import userIcon from "../../assets/user_icon.png";
 
 const Login = () => {
     const { handleLogin, loggedUserId } = useLogin();
@@ -23,9 +26,11 @@ const Login = () => {
     }, [loggedUserId, navigate]);
 
     return(
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
+        <>
+        <div className="container">
+            <Header/>
+            <form onSubmit={handleSubmit} className="form">
+                <img src={userIcon} alt="userIcon" className="userIcon"/>
                 <input
                     autoComplete="off"
                     type="email"
@@ -44,6 +49,7 @@ const Login = () => {
             </form>
             <Link to="/register">Cadastro</Link>
         </div>
+        </>
     );
 };
 

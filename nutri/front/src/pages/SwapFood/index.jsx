@@ -44,18 +44,33 @@ const SwapFood = () => {
             setOptions(optionsAux);
         }
     
-    
+    const handleSwap =  () => {
+        const oldFoodName = document.getElementById('oldFood').value;
+        const newFoodName = document.getElementById('newFood').value;
+        const oldFood = foods.find((food) => food.name === oldFoodName);
+        const newFood = foods.find((food) => food.name === newFoodName);
+        console.log(oldFood,newFood);
+        
+    }
     return (
         <div>
             {isAdmin?(<Link to="/insertFood">Inserir Comida</Link>):null}
             <h1>SwapFood</h1>
             <Autocomplete
                     disablePortal
-                    id="combo-box-demo"
+                    id="oldFood"
                     options={options}
                     sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Comida" />}
+                    renderInput={(params) => <TextField {...params} label="Comida na dieta" />}
                   />
+                  <Autocomplete
+                    disablePortal
+                    id="newFood"
+                    options={options}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="Nova comida" />}
+                  />
+            <button onClick={handleSwap}>Trocar</button>
             <button onClick={handleLogout}>Sair</button>
         </div>
     );

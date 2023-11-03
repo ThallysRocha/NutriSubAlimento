@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --Black: #000000;
+  --Gray_Dark: #121212;
+  --Gray: #333333;
+  --Green_Dark: #4f772d;
+  --Green_Light: #a7c957;
+  --Blue_Light: #168aad;
+  --Orange_Dark: #BC6C25;
+  --Orange_Light: #f4a259;
+  --Red: #e74c3c;
+  --Off_White: #FEFAE0;
+  --White: #ffffff;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+body,
+html,
+#root {
+  background-color: var(--Orange_Light);
+  height: 100vh;
+}
+#root{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.App {
+  display: flex;
+  flex-direction: row;
+}
+
+p {
+  color: var(--Black);
+}
+
+button {
+  cursor: pointer;
+}
+.container {
+  background-color: var(--Off_White);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  height: 75%;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  width: 50%;
+  height: 50%;
+}
+input{
+  width: 100%;
+  height: 2rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--Blue_Light);
+  font-size: 1rem;
+  color: var(--Gray);
+}
+button{
+  width: 100%;
+  height: 2rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--Off_White);
+  font-size: 1rem;
+  color: var(--Off_White);
+  background-color: var(--Blue_Light);
+}
+button:hover{
+  background-color: var(--Orange_Light);
+}
+img{
+  width: 75px;
+  height: 75px;
+}

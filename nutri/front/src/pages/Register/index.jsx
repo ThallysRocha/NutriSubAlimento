@@ -5,12 +5,14 @@ import { api } from "../../services/api";
 const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [password, setPassowrd] = useState("");
+    const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (!name || !email || !password) return;
+        
         try {
             const response = await api.post("/user", {
                 name,
@@ -21,8 +23,11 @@ const Register = () => {
             console.log(response);
             navigate("/login");
         } catch (error) {
+            if (error.response.data.error === "User already exists")
+            alert("Email já está em uso!");
+          else{
             console.log(error);
-            alert("Erro ao cadastrar");
+            alert("Erro ao cadastrar");}
         }
     }
     return (
@@ -45,7 +50,7 @@ const Register = () => {
                     type="password"
                     placeholder="Senha"
                     value={password}
-                    onChange={(event) => setPassowrd(event.target.value)}
+                    onChange={(event) => setPassword(event.target.value)}
                 />
                 <button type="submit">Cadastrar</button>
             </form>
