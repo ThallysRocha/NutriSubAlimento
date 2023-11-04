@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 import { useLogin } from "../../contexts/Login";
 import "./styles.css";
 import Header from "../../components/Header";
