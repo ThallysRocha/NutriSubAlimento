@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { api } from "../../services/api";
+import Header from "../../components/Header";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -31,9 +32,10 @@ const Register = () => {
         }
     }
     return (
-        <div>
-            <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
+        <div className="container">
+            <Header />
+            {/* <h1>Register</h1> */}
+            <form onSubmit={handleSubmit} className="form">
                 <input
                     type="text"
                     placeholder="Nome"

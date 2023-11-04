@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { api } from "../../services/api";
-import { Link } from "react-router-dom";
+import "./styles.css";
+import { useNavigate } from "react-router-dom";
+import Header from "../../components/Header";
 const InsertFood = () => {
     const [name, setName] = useState("");
     const [calories, setCalories] = useState(null);
@@ -8,6 +10,7 @@ const InsertFood = () => {
     const [proteins, setProteins] = useState(null);
     const [fats, setFats] = useState(null);
     const [classe, setClasse] = useState("");
+    const navigate = useNavigate();
     const resetStates = () => {
         setName("");
         setCalories("");
@@ -18,6 +21,7 @@ const InsertFood = () => {
     };
     const handleSubmit = (event) => {
         event.preventDefault();
+        if (!name || !calories || !carbs || !proteins || !fats || !classe) {alert("Preencha todos os campos"); return; }
         try {
             const response = api.post("/food", {
                 name,
@@ -44,10 +48,11 @@ const InsertFood = () => {
         }
     };
     return (
-        <div>
-            <h1>InsertFood</h1>
+        <div className="container">
+        <Header />
+        <form onSubmit={handleSubmit} className="form">
+            <h1>Inserir Nova Comida</h1>
             <h2>Valores para 100g</h2>
-        <form onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="Nome"
@@ -84,8 +89,10 @@ const InsertFood = () => {
                 value={classe}
                 onChange={(event) => setClasse(event.target.value.toLowerCase())}
             />
-            <button type="submit">Cadastrar</button>    
-            <Link to={"/swapFood"}>Voltar</Link>
+            <div className="buttons">                
+            <button className="secondaryButton" onClick={()=>navigate("/swapFood")}>Cancelar</button>
+            <button type="submit" className="primaryButton">Cadastrar</button>    
+            </div>
         </form>
         </div>
     );

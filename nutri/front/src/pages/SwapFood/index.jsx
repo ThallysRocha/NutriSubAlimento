@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
 import { api } from '../../services/api';
+import "./styles.css";
 import * as React from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { useLogin } from "../../contexts/Login";
+import Header from "../../components/Header";
 const SwapFood = () => {
     const admins = ['6539ac2fc0937416b496a323']
-    const { loggedUserId, handleLogout } = useLogin();
+    const { loggedUserId} = useLogin();
     const [foods, setFoods] = useState([]);
     const [options, setOptions] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false);
@@ -53,25 +54,32 @@ const SwapFood = () => {
         
     }
     return (
-        <div>
-            {isAdmin?(<Link to="/insertFood">Inserir Comida</Link>):null}
-            <h1>SwapFood</h1>
+        <div className="container">
+            <Header/>
+            <form onSubmit={handleSwap} className="form">
+            <h1>Substituir comida</h1>
+
             <Autocomplete
+            className="autocomplete"
                     disablePortal
+                    multiple
                     id="oldFood"
                     options={options}
                     sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Comida na dieta" />}
                   />
-                  <Autocomplete
+                  <Autocomplete                  
+                    className="autocomplete"
+                    multiple
                     disablePortal
                     id="newFood"
                     options={options}
                     sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Nova comida" />}
                   />
-            <button onClick={handleSwap}>Trocar</button>
-            <button onClick={handleLogout}>Sair</button>
+            <button onClick={handleSwap} className="primaryButton">Trocar</button>
+
+            </form>
         </div>
     );
 }

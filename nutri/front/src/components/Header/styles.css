@@ -1,15 +1,37 @@
-img .foodIcon{
+.foodIcon{
     width: 75px;
     height: 75px;
+
+}
+.logoutIcon{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.plusIcon{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.plusIconFake{
+    width: 30px;
+    height: 30px;
+    visibility: hidden;
+}
+.logo{
+    position: relative;
+    justify-self: center;
+    align-self: center;
+    margin: auto;
 }
 .header{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     height: fit-content;
     width: 100%;
-    padding: 10px;
+    padding: 10px 0px 10px 0px;
     background-color: var(--Green_Light);
     font-size: 2.5rem;
     font-weight: 700;

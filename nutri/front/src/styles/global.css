@@ -12,6 +12,7 @@
   --Green_Dark: #4f772d;
   --Green_Light: #a7c957;
   --Blue_Light: #168aad;
+  --Blue_Dark: #184e77;
   --Orange_Dark: #BC6C25;
   --Orange_Light: #f4a259;
   --Red: #e74c3c;
@@ -57,11 +58,12 @@ button {
   height: 75%;
 }
 .form {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  
+  justify-items: center;
+  position: relative;
   width: 50%;
   height: 50%;
 }
@@ -75,8 +77,29 @@ input{
   font-size: 1rem;
   color: var(--Gray);
 }
-button{
+
+img{
   width: 100%;
+  height: 100%;
+}
+.secondaryButton{
+  width: 25%;
+  height: 2rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--Blue_Light);
+  font-size: 1rem;
+  color: var(--Blue_Light);
+  background-color: var(--Off_White);
+}
+.secondaryButton:hover{
+  
+  color: var(--Blue_Dark);
+  border: 1px solid var(--Blue_Dark);
+}
+.primaryButton{
+  width: 50%;
   height: 2rem;
   margin-bottom: 1rem;
   padding: 0.5rem;
@@ -86,10 +109,6 @@ button{
   color: var(--Off_White);
   background-color: var(--Blue_Light);
 }
-button:hover{
-  background-color: var(--Orange_Light);
-}
-img{
-  width: 75px;
-  height: 75px;
+.primaryButton:hover{
+  background-color: var(--Blue_Dark);
 }

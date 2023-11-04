@@ -26,7 +26,6 @@ const Login = () => {
     }, [loggedUserId, navigate]);
 
     return(
-        <>
         <div className="container">
             <Header/>
             <form onSubmit={handleSubmit} className="form">
@@ -45,11 +44,11 @@ const Login = () => {
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                 />
-                <button type="submit">Entrar</button>
+                <button type="submit" className="primaryButton">Entrar</button>
             </form>
-            <Link to="/register">Cadastro</Link>
+            <button onClick={()=>navigate("/Register")} className="secondaryButton">Criar Conta</button>
+
         </div>
-        </>
     );
 };
 
