@@ -7,7 +7,8 @@ import TextField from '@mui/material/TextField';
 import { useLogin } from "../../contexts/Login";
 import Header from "../../components/Header";
 const SwapFood = () => {
-    const admins = ['6539ac2fc0937416b496a323']
+    //const admins = ['6539ac2fc0937416b496a323']
+    const admins = process.env.REACT_APP_ADMIN_IDS.split(',').map((id) => id.replace('"', '').replace('"', ''));
     const { loggedUserId} = useLogin();
     const [foods, setFoods] = useState([]);
     const [options, setOptions] = useState([]);

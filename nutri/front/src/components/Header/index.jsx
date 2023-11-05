@@ -7,7 +7,8 @@ import { useNavigate } from "react-router";
 import logoutIcon from "../../assets/logout_icon.png";
 import plusIcon from "../../assets/plus_icon.png";
 const Header = () => {
-    const admins = ['6539ac2fc0937416b496a323']
+    //const admins = ['6539ac2fc0937416b496a323']
+    const admins = process.env.REACT_APP_ADMIN_IDS.split(',').map((id) => id.replace('"', '').replace('"', ''));
     const { loggedUserId, handleLogout } = useLogin();    
     const [isAdmin, setIsAdmin] = useState(false);
     const navigate = useNavigate();
