@@ -1,13 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { api } from "../../services/api";
 import Header from "../../components/Header";
+import Spinner from "../../components/Spinner";
+import "./styles.css";
 
 const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const [loading,setLoading] = useState(false); 
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -15,15 +17,18 @@ const Register = () => {
         if (!name || !email || !password) return;
         
         try {
+            setLoading(true);
             const response = await api.post("/user", {
                 name,
                 email,
                 password,
             });
+            setLoading(false);
             alert("Cadastrado com sucesso");
             console.log(response);
             navigate("/login");
         } catch (error) {
+            setLoading(false);
             if (error.response.data.error === "User already exists")
             alert("Email já está em uso!");
           else{
@@ -35,7 +40,7 @@ const Register = () => {
         <div className="container">
             <Header />
             {/* <h1>Register</h1> */}
-            <form onSubmit={handleSubmit} className="form">
+            <form onSubmit={handleSubmit} className="form" >
                 <input
                     type="text"
                     placeholder="Nome"
@@ -54,9 +59,10 @@ const Register = () => {
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                 />
-                <button type="submit">Cadastrar</button>
+                {loading && <Spinner/>}              
+                <button type="submit" className="primaryButton" disabled={loading}>Cadastrar</button> 
             </form>
-            <Link to="/login">Login</Link>
+            <button className="secondaryButton" onClick={()=>navigate("/login")} disabled={loading}>Já tenho conta</button>
         </div>
     );
 };

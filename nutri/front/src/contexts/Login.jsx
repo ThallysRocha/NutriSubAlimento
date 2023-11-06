@@ -7,7 +7,7 @@ import { api, setAuthToken } from "../services/api";
 const LoginContext = createContext();
 export const LoginProvider = ({ children }) => {
     const [loggedUserId, setLoggedUserId] = useState("");
-
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleLogout = useCallback(() => {
@@ -46,17 +46,23 @@ export const LoginProvider = ({ children }) => {
     const handleLogin = useCallback(async (email, password) => {
         try {
           const body = { email, password };
+          setLoading(true);
           const response = await api.post("/auth/login", body);
           const { token, userId } = response.data;
             localStorage.setItem("token", token);
             setAuthToken(token);
             setLoggedUserId(userId);
+            setLoading(false);
             navigate("/swapFood");
         } catch (error) {
-          if (error.response.data.error === "Invalid credentials")
+          if (error.response.data.error === "Invalid credentials"){
+            setLoading(false);
             alert("Credenciais inválidas");
-          else
+          }
+          else{
+            setLoading(false);
             alert("Erro ao logar");
+          }
         }
     }, [navigate]);
     
@@ -67,8 +73,10 @@ export const LoginProvider = ({ children }) => {
             setLoggedUserId,
             handleLogin,
             handleLogout,
+            loading,
+            setLoading,
         }),
-        [loggedUserId, handleLogin, handleLogout]
+        [loggedUserId, handleLogin, handleLogout, loading]
     );
 
     return (

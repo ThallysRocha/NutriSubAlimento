@@ -3,6 +3,7 @@ import { api } from "../../services/api";
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
+import Spinner from "../../components/Spinner";
 const InsertFood = () => {
     const [name, setName] = useState("");
     const [calories, setCalories] = useState(null);
@@ -10,6 +11,7 @@ const InsertFood = () => {
     const [proteins, setProteins] = useState(null);
     const [fats, setFats] = useState(null);
     const [classe, setClasse] = useState("");
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const resetStates = () => {
         setName("");
@@ -23,6 +25,7 @@ const InsertFood = () => {
         event.preventDefault();
         if (!name || !calories || !carbs || !proteins || !fats || !classe) {alert("Preencha todos os campos"); return; }
         try {
+            setLoading(true);
             const response = api.post("/food", {
                 name,
                 calories,
@@ -33,16 +36,19 @@ const InsertFood = () => {
             });
             response
                 .then((result) => {
+                    setLoading(false);
                     alert("Cadastrado com sucesso");
                     console.log(result);
                     resetStates();
 
                 })
                 .catch((error) => {
+                    setLoading(false);
                     alert("Erro ao cadastrar");
                     console.log(error);
                 });
         } catch (error) {
+            setLoading(false);
             console.log(error);
             alert("Erro ao cadastrar");
         }
@@ -90,8 +96,9 @@ const InsertFood = () => {
                 onChange={(event) => setClasse(event.target.value.toLowerCase())}
             />
             <div className="buttons">                
-            <button className="secondaryButton" onClick={()=>navigate("/swapFood")}>Cancelar</button>
-            <button type="submit" className="primaryButton">Cadastrar</button>    
+            <button className="secondaryButton" onClick={()=>navigate("/swapFood")} disabled={loading}>Cancelar</button>
+            {loading && <Spinner/>}
+            <button type="submit" className="primaryButton" disabled={loading}>Cadastrar</button>    
             </div>
         </form>
         </div>
