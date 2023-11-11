@@ -27,12 +27,12 @@ const InsertFood = () => {
         try {
             setLoading(true);
             const response = api.post("/food", {
-                name,
+                "name":name.toLowerCase(),
                 calories,
                 carbs,
                 proteins,
                 fats,
-                "class":classe,
+                "class":classe.toLowerCase(),
             });
             response
                 .then((result) => {

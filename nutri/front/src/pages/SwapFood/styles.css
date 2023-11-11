@@ -1,4 +1,15 @@
 .autocomplete{
     margin-bottom: 1rem;
-    
+    margin-top: 1rem;
+}
+.foodCardsSeparator{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.foodCards{
+    display: flex;
+    flex-direction: column;
 }
