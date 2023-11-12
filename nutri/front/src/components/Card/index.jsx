@@ -6,10 +6,11 @@ const Card = ({
     proteins,
     fats,
     group,
+    misses=[],
     ...props
 }) => {
     return (
-        <div {...props} className="foodCard">
+        <div {...props} className={misses.includes(group) && !!misses?"foodCardMissing":"foodCard"}>
             <label>Nome: {name} </label>
             <label>Calorias: {calories} </label>
             <label>Carboidratos: {carbs} </label>

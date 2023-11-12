@@ -9,3 +9,14 @@
     margin-bottom: 20px;
 
 }
+.foodCardMissing{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 150px;
+    height: 200px;
+    border: solid 2px var(--Red);
+    margin-bottom: 20px;
+
+}

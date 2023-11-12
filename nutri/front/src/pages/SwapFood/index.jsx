@@ -17,6 +17,8 @@ const SwapFood = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [selectedFoodName, setSelectedFoodName] = useState(null);
     const [newFoodName, setNewFoodName] = useState(null);
+    const [missmatchesNew, setMissmatchesNew] = useState([]);
+    const [missmatchesSelected, setMissmatchesSelected] = useState([]);
     useEffect(() => {
         const getFoods = async () => {
             try{
@@ -148,30 +150,40 @@ const SwapFood = () => {
         //console.log(value);
         const selectedFoodNameAux = value.map((food) => food.label);
         setSelectedFoodName(selectedFoodNameAux);
-        const selectedFoodsClasses = getFoodsClasses(selectedFoodNameAux);
-        //const optionsRecomendedAux = options.filter((food) => (selectedFoodsClasses.includes(getFoodClass(food.label).toLowerCase())));
-        //console.log(selectedFoodsClasses,selectedFoodNameAux,optionsRecomendedAux);
+        setMissmatches(newFoodName,selectedFoodNameAux);
+        // const selectedFoodsClasses = getFoodsClasses(selectedFoodNameAux);
+        // const optionsRecomendedAux = options.filter((food) => (selectedFoodsClasses.includes(getFoodClass(food.label).toLowerCase())));
+        // console.log(selectedFoodsClasses,selectedFoodNameAux,optionsRecomendedAux);
 
-        //setOptionsRecomended(optionsRecomendedAux);
-        const newFoodsClasses = getFoodsClasses(newFoodName);
-        //console.log(selectedFoodsClasses,newFoodsClasses);
-        const missmatchesSelected = selectedFoodsClasses.filter((selectedFoodClass)=>!newFoodsClasses.includes(selectedFoodClass));
-        
+        // setOptionsRecomended(optionsRecomendedAux);
+        // const newFoodsClasses = getFoodsClasses(newFoodName);
+        // //console.log(selectedFoodsClasses,newFoodsClasses);
+        // const missmatchesSelected = selectedFoodsClasses.filter((selectedFoodClass)=>!newFoodsClasses.includes(selectedFoodClass));
+        // console.log(missmatchesSelected);
     }
     const handleChangeNewFood = (event,value) => {
         //console.log(value);
         const newFoodNameAux = value.map((food) => food.label);
         setNewFoodName(newFoodNameAux);
+        setMissmatches(newFoodNameAux,selectedFoodName);
 
-        const selectedFoodsClasses = getFoodsClasses(selectedFoodName);
-        const newFoodsClasses = getFoodsClasses(newFoodName);
-        //console.log(selectedFoodsClasses,newFoodsClasses);        
-        const missmatchesNew = newFoodsClasses.filter((newFoodClass)=>!selectedFoodsClasses.includes(newFoodClass));
-        
+        // const selectedFoodsClasses = getFoodsClasses(selectedFoodName);
+        // const newFoodsClasses = getFoodsClasses(newFoodName);
+        // //console.log(selectedFoodsClasses,newFoodsClasses);        
+        // const missmatchesNew = newFoodsClasses.filter((newFoodClass)=>!selectedFoodsClasses.includes(newFoodClass));
+        // console.log(missmatchesNew);
 
     }
-
-
+    const setMissmatches = (valueNew, valueSelected) =>{
+        const selectedFoodsClasses = getFoodsClasses(valueSelected);
+        const newFoodsClasses = getFoodsClasses(valueNew);                
+        const missmatchesNewAux = newFoodsClasses.filter((newFoodClass)=>!selectedFoodsClasses.includes(newFoodClass));        
+        const missmatchesSelectedAux = selectedFoodsClasses.filter((selectedFoodClass)=>!newFoodsClasses.includes(selectedFoodClass));
+        setMissmatchesNew(missmatchesNewAux);
+        setMissmatchesSelected(missmatchesSelectedAux);
+        //console.log(selectedFoodsClasses,newFoodsClasses);
+        //console.log(missmatchesNewAux,missmatchesSelectedAux);
+    }
     return (
         <div className="container">
             <Header/>
@@ -210,6 +222,7 @@ const SwapFood = () => {
                 fats={food.fats}
                 group={food.class}
                 key={food.name}
+                misses={missmatchesSelected}
                 />)}</div>:""}
                 {newFoodName?<div className="foodCards"> Comidas novas: <br/> <br/>{getFoodsAtributes(newFoodName).map((food)=>
                 <Card 
@@ -220,6 +233,7 @@ const SwapFood = () => {
                 fats={food.fats}
                 group={food.class}
                 key={food.name}
+                misses={missmatchesNew}
                 />)}</div>:""}
             </div>
         </div>
