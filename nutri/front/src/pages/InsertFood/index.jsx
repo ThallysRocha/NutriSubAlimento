@@ -73,8 +73,10 @@ const InsertFood = () => {
                 })
                 .catch((error) => {
                     setLoading(false);
-                    alert("Erro ao cadastrar");
-                    console.log(error);
+                    if (error.response.data.error === "Food already exists")
+                        alert("Comida já foi cadastrada anteriormente!");
+                    else
+                    {alert("Erro ao cadastrar"); console.log(error);}
                 });
             }
         } catch (error) {
@@ -125,6 +127,7 @@ const InsertFood = () => {
                         setClasse(newInputValue);
                         }}
                     freeSolo
+                    inputValue={classe}
                     id="newFood"
                     options={classes}
                     sx={{ 

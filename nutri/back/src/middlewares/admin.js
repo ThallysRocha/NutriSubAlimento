@@ -28,15 +28,15 @@ export const adminMiddleware = async (request, response, next) => {
   let isAdmin = false;
   
   const adminIds = process.env.ADMIN_IDS.split(',').map((id) => id.replace('"', '').replace('"', ''));
-  console.log(adminIds);
+  console.log(adminIds,request.userId);
   adminIds.forEach((adminId) => {
     if (request.userId == adminId && !isAdmin) {
-      
       isAdmin = true;
     }
+  });
     if (!isAdmin) {
+        //console.log(adminIds[1],request.userId,adminIds[1]==request.userId,isAdmin);
         return response.status(401).json({ error: "Only admin users can access this route"});
     }
-  });
   return next();
 };
