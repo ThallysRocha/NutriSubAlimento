@@ -47,7 +47,7 @@ const SwapFood = () => {
             
             const optionsAux = [...options];
             foods.map((food,index) => (
-                optionsAux.push({ label: food.name, id: index }))
+                optionsAux.push({ label: food.name }))
             
             );
             setOptions(optionsAux);

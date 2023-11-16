@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import Spinner from "../../components/Spinner";
+import Autocomplete from '@mui/material/Autocomplete';
+import { useLogin } from "../../contexts/Login";
 const InsertFood = () => {
     const [name, setName] = useState("");
     const [calories, setCalories] = useState(null);
@@ -12,6 +14,32 @@ const InsertFood = () => {
     const [fats, setFats] = useState(null);
     const [classe, setClasse] = useState("");
     const [loading, setLoading] = useState(false);
+    const [classes, setClasses] = useState([]);
+    const [foods, setFoods] = useState([]);
+    const { loggedUserId} = useLogin();
+    useEffect(() => {
+        try {
+            setLoading(true);
+            if (loggedUserId) {
+
+                const response = api.get("/food");
+                response
+                    .then((result) => {
+                        setFoods(result.data.foods.map((food)=>food.class.toLowerCase()));
+                        console.log([...new Set(result.data.foods.map((food)=>food.class.toLowerCase()))].map((food)=>({label:food})));
+                        setClasses([...new Set(result.data.foods.map((food)=>food.class.toLowerCase()))].map((food)=>({label:food})));
+                        setLoading(false);
+                    })
+                    .catch((error) => {
+                        setLoading(false);
+                        console.log(error);
+                    });
+            }
+        } catch (error) {
+            setLoading(false);
+            console.log(error);
+        }
+    }, [loggedUserId]);
     const navigate = useNavigate();
     const resetStates = () => {
         setName("");
@@ -25,6 +53,7 @@ const InsertFood = () => {
         event.preventDefault();
         if (!name || !calories || !carbs || !proteins || !fats || !classe) {alert("Preencha todos os campos"); return; }
         try {
+            if (loggedUserId) {
             setLoading(true);
             const response = api.post("/food", {
                 "name":name.toLowerCase(),
@@ -47,6 +76,7 @@ const InsertFood = () => {
                     alert("Erro ao cadastrar");
                     console.log(error);
                 });
+            }
         } catch (error) {
             setLoading(false);
             console.log(error);
@@ -89,12 +119,28 @@ const InsertFood = () => {
                 value={fats}
                 onChange={(event) => setFats(event.target.value)}
             />
-            <input
-                type="text"
-                placeholder="Classe"
-                value={classe}
-                onChange={(event) => setClasse(event.target.value.toLowerCase())}
-            />
+            <Autocomplete      
+                    onInputChange={(event, newInputValue) => {
+                        //console.log(newInputValue,classes);
+                        setClasse(newInputValue);
+                        }}
+                    freeSolo
+                    id="newFood"
+                    options={classes}
+                    sx={{ 
+                            width: '100%',
+                            height: '3rem',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                     }}
+                     renderInput={(params) => (
+                        <div ref={params.InputProps.ref} className="autocomplete">
+                          <input type="text" placeholder="Classe" {...params.inputProps} />
+                        </div>
+                    )}
+                  />
             <div className="buttons">                
             <button className="secondaryButton" onClick={()=>navigate("/swapFood")} disabled={loading}>Cancelar</button>
             {loading && <Spinner/>}
