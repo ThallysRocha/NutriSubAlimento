@@ -88,9 +88,9 @@ const InsertFood = () => {
     return (
         <div className="container">
         <Header />
-        <form onSubmit={handleSubmit} className="form">
             <h1>Inserir Nova Comida</h1>
             <h2>Valores para 100g</h2>
+        <form onSubmit={handleSubmit} className="form">
             <input
                 type="text"
                 placeholder="Nome"

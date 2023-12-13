@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.css";
 import foodIcon from "../../assets/food_icon.png";
+import logo_JR_light from "../../assets/logo_JR_light.png";
 import { useLogin } from "../../contexts/Login";
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -20,8 +21,11 @@ const Header = () => {
             {loggedUserId?(<img src={logoutIcon} alt="LogoutIcon" className="logoutIcon" onClick={handleLogout}/>):null}
             
             <div className="logo">
-            <img src={foodIcon} alt="foodIcon" className="foodIcon"/>
-            <h1 className="title">NutriApp</h1>
+            <img src={logo_JR_light} alt="logo_JR_light" className="logo_JR_light"/>
+            <div className="titleBox">                
+            <h1 className="title">José Ricardo</h1>
+            <h2 className="subtitle">Nutrição Exportiva</h2>
+            </div>
             </div>
             {isAdmin?(<img src={plusIcon} alt="PlusIcon" className="plusIcon" onClick={()=>navigate("/insertFood")}/>):null}
             {!isAdmin?(<img src={plusIcon} alt="PlusIcon" className="plusIconFake"/>):null}

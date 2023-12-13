@@ -1,4 +1,4 @@
-.foodIcon{
+.logo_JR_light{
     width: 75px;
     height: 75px;
 
@@ -20,9 +20,19 @@
 }
 .logo{
     position: relative;
+    display: flex;
     justify-self: center;
     align-self: center;
     margin: auto;
+    align-items: center;
+}
+.subtitle{
+    font-size: 1.35rem;
+    font-weight: 100;
+    margin-bottom: 1rem;
+    text-align: start;
+    color: var(--Green_Light);
+
 }
 .header{
     display: flex;
@@ -32,20 +42,21 @@
     height: fit-content;
     width: 100%;
     padding: 10px 0px 10px 0px;
-    background-color: var(--Green_Light);
+    background-color: var(--Dark1);
     font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
-    color: var(--Off_White);
-    font-family: Pacifico;
+    color: var(--Light1);
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     z-index: 1;
+    margin-bottom: 1rem;
+}
+.titleBox{
+    margin-left: 20px;
 }
 .title{
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    text-align: center;
-    color: var(--Off_White);
-    font-family: Pacifico;
+    font-size: 5rem;
+    font-weight: 100;
+    text-align: start;
+    color: var(--Light1);
 }

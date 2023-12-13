@@ -1,18 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Sora');
 * {
   margin: 0;
   padding: 0;
   outline: 0;
   box-sizing: border-box;
+  font-family: 'Sora', monospace;
 }
 
 :root {
-  --Black: #000000;
+  --Dark1: #181D20;
+  --Light1: #f0ece4;
   --Gray_Dark: #121212;
-  --Gray: #333333;
+  --Gray: #6e8687;
   --Green_Dark: #4f772d;
-  --Green_Light: #a7c957;
+  --Green_Light: #C1DFE0;
   --Blue_Light: #168aad;
-  --Blue_Dark: #184e77;
+  --Blue_Dark: #254555;
   --Orange_Dark: #BC6C25;
   --Orange_Light: #f4a259;
   --Red: #e74c3c;
@@ -21,16 +24,15 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased !important;
 }
 
 body,
 html,
 #root {
-  background-color: var(--Off_White);
+  background-color: var(--Light1);
   /* height: 100vh; */
-  
+  overflow:scroll;
   height: 100%;
 }
 #root{
@@ -45,14 +47,14 @@ html,
 }
 
 p {
-  color: var(--Black);
+  color: var(--Light1);
 }
 
 button {
   cursor: pointer;
 }
 .container {
-  background-color: var(--Off_White);
+  background-color: var(--Light1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,13 +63,13 @@ button {
   height: 100%; 
 }
 .form {
-  margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
   width: 50%;
+  color: var(--Dark1);
   /* position: relative;
   
   height: 50%; */
@@ -78,9 +80,10 @@ input{
   margin-bottom: 1rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--Blue_Light);
+  border: 1px solid var(--Blue_Dark);
   font-size: 1rem;
-  color: var(--Gray);
+  color: var(--Blue_Dark);
+  background-color: var(--Light1);
 }
 
 img{
@@ -93,15 +96,16 @@ img{
   margin-bottom: 1rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--Blue_Light);
+  border: 0px solid var(--Blue_Dark);
   font-size: 1rem;
-  color: var(--Blue_Light);
-  background-color: var(--Off_White);
+  color: var(--Blue_Dark);
+  background-color: var(--Light1);
+
 }
 .secondaryButton:hover{
   
-  color: var(--Blue_Dark);
-  border: 1px solid var(--Blue_Dark);
+  color: var(--Blue_Light);
+  border: 0px solid var(--Blue_Light);
 }
 .primaryButton{
   width: 50%;
@@ -109,11 +113,11 @@ img{
   margin-bottom: 1rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--Off_White);
+  border: 1px solid var(--Green_Light);
   font-size: 1rem;
-  color: var(--Off_White);
-  background-color: var(--Blue_Light);
+  color: var(--Light1);
+  background-color: var(--Blue_Dark);
 }
 .primaryButton:hover{
-  background-color: var(--Blue_Dark);
+  background-color: var(--Blue_Light);
 }

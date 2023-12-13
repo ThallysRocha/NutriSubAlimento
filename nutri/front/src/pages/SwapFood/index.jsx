@@ -181,14 +181,14 @@ const SwapFood = () => {
         const missmatchesSelectedAux = selectedFoodsClasses.filter((selectedFoodClass)=>!newFoodsClasses.includes(selectedFoodClass));
         setMissmatchesNew(missmatchesNewAux);
         setMissmatchesSelected(missmatchesSelectedAux);
-        //console.log(selectedFoodsClasses,newFoodsClasses);
-        //console.log(missmatchesNewAux,missmatchesSelectedAux);
+        console.log(selectedFoodsClasses,newFoodsClasses);
+        console.log(missmatchesNewAux,missmatchesSelectedAux);
     }
     return (
         <div className="container">
             <Header/>
-            <form onSubmit={handleSwap} className="form">
             <h1>Substituir comida</h1>
+            <form onSubmit={handleSwap} className="form">
 
             <Autocomplete
             className="autocomplete"
