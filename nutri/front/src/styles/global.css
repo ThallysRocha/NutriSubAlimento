@@ -31,8 +31,8 @@ body,
 html,
 #root {
   background-color: var(--Light1);
-  /* height: 100vh; */
-  overflow:scroll;
+  /* height: 100vh; 
+  overflow:scroll;*/
   height: 100%;
 }
 #root{
@@ -47,7 +47,7 @@ html,
 }
 
 p {
-  color: var(--Light1);
+  color: var(--Gray);
 }
 
 button {
@@ -61,6 +61,7 @@ button {
   width: 100%;
   /* width: 75%;*/
   height: 100%; 
+  overflow-y: scroll;
 }
 .form {
   margin-bottom: 20px;

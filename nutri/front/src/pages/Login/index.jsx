@@ -25,7 +25,6 @@ const Login = () => {
 
     return(
         <div className="container">
-            <Header/>
             <form onSubmit={handleSubmit} className="form">
                 <img src={userIcon} alt="userIcon" className="userIcon"/>
                 <input
@@ -48,7 +47,6 @@ const Login = () => {
                 {loading && <Spinner/>}
             </form>
             <button onClick={()=>navigate("/Register")} className="secondaryButton" disabled={loading}>Criar Conta</button>
-
         </div>
     );
 };

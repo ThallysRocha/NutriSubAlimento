@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
-import Header from "../../components/Header";
 import Spinner from "../../components/Spinner";
 import Autocomplete from '@mui/material/Autocomplete';
 import { useLogin } from "../../contexts/Login";
@@ -87,7 +86,6 @@ const InsertFood = () => {
     };
     return (
         <div className="container">
-        <Header />
             <h1>Inserir Nova Comida</h1>
             <h2>Valores para 100g</h2>
         <form onSubmit={handleSubmit} className="form">

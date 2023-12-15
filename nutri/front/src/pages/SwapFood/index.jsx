@@ -5,7 +5,6 @@ import * as React from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { useLogin } from "../../contexts/Login";
-import Header from "../../components/Header";
 import Card from "../../components/Card";
 const SwapFood = () => {
     //const admins = ['6539ac2fc0937416b496a323']
@@ -186,7 +185,6 @@ const SwapFood = () => {
     }
     return (
         <div className="container">
-            <Header/>
             <h1>Substituir comida</h1>
             <form onSubmit={handleSwap} className="form">
 

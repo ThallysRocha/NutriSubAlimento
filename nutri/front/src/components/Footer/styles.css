@@ -1,0 +1,17 @@
+.footer{
+    width: 100%;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 10px;
+    margin-bottom: 20px;
+}
+a{
+    color: var(--Gray);
+}
+.email, .phone, .site, .instagram{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

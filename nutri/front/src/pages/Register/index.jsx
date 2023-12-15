@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { api } from "../../services/api";
-import Header from "../../components/Header";
 import Spinner from "../../components/Spinner";
 import "./styles.css";
 
@@ -38,7 +37,6 @@ const Register = () => {
     }
     return (
         <div className="container">
-            <Header />
             {/* <h1>Register</h1> */}
             <form onSubmit={handleSubmit} className="form" >
                 <input

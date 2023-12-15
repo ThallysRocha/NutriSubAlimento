@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles.css";
-import foodIcon from "../../assets/food_icon.png";
 import logo_JR_light from "../../assets/logo_JR_light.png";
 import { useLogin } from "../../contexts/Login";
 import { useState } from "react";
