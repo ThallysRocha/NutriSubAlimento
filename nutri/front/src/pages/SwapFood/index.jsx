@@ -186,28 +186,29 @@ const SwapFood = () => {
     return (
         <div className="container">
             <h1>Substituir comida</h1>
-            <form onSubmit={handleSwap} className="form">
-
-            <Autocomplete
-            className="autocomplete"
-                    disablePortal
-                    multiple
-                    onChange={(event,value) => handleChangeSelectedFood(event,value)}
-                    id="oldFood"
-                    options={options}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Comida na dieta" />}
-                  />
-                  <Autocomplete                  
-                    className="autocomplete"
-                    multiple
-                    onChange={(event, value) => handleChangeNewFood(event,value)}
-                    disablePortal
-                    id="newFood"
-                    options={options}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Nova comida" />}
-                  />
+            <form onSubmit={handleSwap} className="form-swap">
+                <div className="autocomplete-box">                    
+                    <Autocomplete
+                        className="autocomplete"
+                        disablePortal
+                        multiple
+                        onChange={(event,value) => handleChangeSelectedFood(event,value)}
+                        id="oldFood"
+                        options={options}
+                        sx={{ width: 250 }}
+                        renderInput={(params) => <TextField {...params} label="Comida na dieta" />}
+                    />
+                    <Autocomplete                  
+                        className="autocomplete"
+                        multiple
+                        onChange={(event, value) => handleChangeNewFood(event,value)}
+                        disablePortal
+                        id="newFood"
+                        options={options}
+                        sx={{ width: 250 }}
+                        renderInput={(params) => <TextField {...params} label="Nova comida" />}
+                    />
+                </div>
             <button type="submit" className="primaryButton">Trocar</button>
             </form>
             <div className="foodCardsSeparator">

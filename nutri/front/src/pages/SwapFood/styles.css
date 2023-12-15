@@ -1,7 +1,30 @@
+.form-swap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+}
+.form-swap button{
+    width: 25%;
+}
 .autocomplete{
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
+.autocomplete-box{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+@media screen and (max-width: 620px) {
+    .autocomplete-box{
+       flex-direction: column;
+    }
+}
+
 .foodCardsSeparator{
     display: flex;
     flex-direction: row;

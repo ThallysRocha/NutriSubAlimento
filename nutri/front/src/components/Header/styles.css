@@ -21,10 +21,16 @@
 .logo{
     position: relative;
     display: flex;
-    justify-self: center;
     align-self: center;
     margin: auto;
     align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+@media screen and (max-width: 700px){
+    .logo{
+        width: 430px;
+    }
 }
 .subtitle{
     font-size: 1.35rem;
@@ -50,6 +56,12 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     z-index: 1;
     margin-bottom: 1rem;
+}
+@media screen and (max-width: 480px){
+    .titleBox{
+        display: none;
+    }
+
 }
 .titleBox{
     margin-left: 20px;
