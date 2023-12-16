@@ -23,7 +23,7 @@ const Header = () => {
             <img src={logo_JR_light} alt="logo_JR_light" className="logo_JR_light"/>
             <div className="titleBox">                
             <h1 className="title">José Ricardo</h1>
-            <h2 className="subtitle">Nutrição Exportiva</h2>
+            <h2 className="subtitle">Nutrição Esportiva</h2>
             </div>
             </div>
             {isAdmin&&loggedUserId?(<img src={plusIcon} alt="PlusIcon" className="plusIcon" onClick={()=>navigate("/insertFood")}/>):null}

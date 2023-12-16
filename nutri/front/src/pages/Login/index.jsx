@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { useLogin } from "../../contexts/Login";
 import "./styles.css";
 import Header from "../../components/Header";
-import userIcon from "../../assets/user_icon.png";
+import userIcon from "../../assets/JR_user_icon.png";
 import Spinner from "../../components/Spinner";
 
 const Login = () => {
@@ -26,7 +26,9 @@ const Login = () => {
     return(
         <div className="container">
             <form onSubmit={handleSubmit} className="form">
+                <div className="userIcon-box">
                 <img src={userIcon} alt="userIcon" className="userIcon"/>
+                </div>
                 <input
                     disabled={loading}
                     autoComplete="off"

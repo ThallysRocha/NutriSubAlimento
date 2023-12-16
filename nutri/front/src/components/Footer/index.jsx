@@ -13,15 +13,15 @@ const Footer = () => {
             </div>
             <div>
                 <img className="footer-icon" src={email_icon} alt="email_icon" />
-                <p className="email">Email <br /> josericardocampos@gmail.com</p>
+                <p className="email">Email<a href="mailto:josericardocampos@gmail.com">josericardocampos@gmail.com</a></p>
             </div>
             <div>
                 <img className="footer-icon" src={phone_icon} alt="phone_icon" />
-                <p className="phone">Telefone (81) 98669-4811</p>
+                <p className="phone">Telefone <a href="https://wa.me/5581986694811">(81) 98669-4811</a></p>
             </div>
             <div>
                 <img className="footer-icon" src={site_icon} alt="site_icon" />
-                <p className="site">www.josericardonutricao.com.br</p>
+                <p className="site">Site <a href="http://www.josericardonutricao.com.br/">www.josericardonutricao.com.br</a></p>
             </div>
             
         </div>

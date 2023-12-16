@@ -1,11 +1,19 @@
 .userIcon{
-    margin-bottom: 1rem;
     width: 100px;
     height: 100px;
+    z-index: 1;
 }
 *:disabled{
     cursor: not-allowed;
 }
 .primaryButton:disabled{
     display: none;
+}
+.userIcon-box{
+    border: solid 2px var(--Blue_Light);
+    border-radius: 50%;
+    height: fit-content;
+    width: fit-content;    
+    margin-bottom: 1rem;
+    background-color: var(--Dark1);
 }
