@@ -26,8 +26,8 @@ const Header = () => {
             <h2 className="subtitle">Nutrição Exportiva</h2>
             </div>
             </div>
-            {isAdmin?(<img src={plusIcon} alt="PlusIcon" className="plusIcon" onClick={()=>navigate("/insertFood")}/>):null}
-            {!isAdmin?(<img src={plusIcon} alt="PlusIcon" className="plusIconFake"/>):null}
+            {isAdmin&&loggedUserId?(<img src={plusIcon} alt="PlusIcon" className="plusIcon" onClick={()=>navigate("/insertFood")}/>):null}
+            {!isAdmin&&!loggedUserId?(<img src={plusIcon} alt="PlusIcon" className="plusIconFake"/>):null}
         </div>
     );
 };

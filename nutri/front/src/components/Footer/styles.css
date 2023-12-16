@@ -26,7 +26,7 @@ a{
     align-items: center;
     justify-content: center;
 }
-@media screen and (max-width: 480px){
+@media screen and (max-width: 280px){
     .footer{
         grid-template-columns: 1fr;
     }
@@ -34,5 +34,14 @@ a{
 @media screen and (min-width: 1200px){
     .footer{
         grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+@media screen and (max-width: 480px){
+    .footer{
+        font-size: 0.5rem;
+    }
+    .footer-icon{
+        width: 10px;
+        height: 10px;
     }
 }

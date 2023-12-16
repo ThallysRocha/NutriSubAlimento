@@ -65,6 +65,7 @@ button {
   overflow-y: scroll;
 }
 .form {
+  min-width: 200px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -93,7 +94,7 @@ img{
   height: 100%;
 }
 .secondaryButton{
-  width: 25%;
+  width: fit-content;
   height: 2rem;
   margin-bottom: 1rem;
   padding: 0.5rem;
@@ -119,6 +120,7 @@ img{
   font-size: 1rem;
   color: var(--Light1);
   background-color: var(--Blue_Dark);
+  min-width: fit-content;
 }
 .primaryButton:hover{
   background-color: var(--Blue_Light);
