@@ -9,15 +9,22 @@
     cursor: pointer;
     margin-left: 30px;
 }
+.logoutIconFake{
+    width: 30px;
+    height: 30px;
+    margin-left: 30px;
+    visibility: hidden;
+}
 .plusIcon{
     width: 30px;
     height: 30px;
     cursor: pointer;
-    margin-right: 30px;
+    margin-right: 30px;    
 }
 .plusIconFake{
     width: 30px;
     height: 30px;
+    margin-right: 30px;
     visibility: hidden;
 }
 .logo{

@@ -17,7 +17,7 @@ const Header = () => {
     }
     return (
         <div className="header">
-            {loggedUserId?(<img src={logoutIcon} alt="LogoutIcon" className="logoutIcon" onClick={handleLogout}/>):null}
+            {loggedUserId?(<img src={logoutIcon} alt="LogoutIcon" className="logoutIcon" onClick={handleLogout}/>):<img src={logoutIcon} alt="LogoutIconFake" className="logoutIconFake" />}
             
             <div className="logo">
             <img src={logo_JR_light} alt="logo_JR_light" className="logo_JR_light"/>
@@ -26,8 +26,8 @@ const Header = () => {
             <h2 className="subtitle">Nutrição Esportiva</h2>
             </div>
             </div>
-            {isAdmin&&loggedUserId?(<img src={plusIcon} alt="PlusIcon" className="plusIcon" onClick={()=>navigate("/insertFood")}/>):null}
-            {!isAdmin&&!loggedUserId?(<img src={plusIcon} alt="PlusIcon" className="plusIconFake"/>):null}
+            {isAdmin&&loggedUserId?(<img src={plusIcon} alt="PlusIcon" className="plusIcon" onClick={()=>navigate("/insertFood")}/>):<img src={plusIcon} alt="PlusIconFake" className="plusIconFake"/>}
+            
         </div>
     );
 };

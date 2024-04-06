@@ -8,6 +8,6 @@ export const foodRouter = express.Router();
 const foodController = new FoodController();
 
 foodRouter.post('/', adminMiddleware, foodController.createFood);
-foodRouter.get('/', authorizationMiddleware, foodController.getAllFoods);
-foodRouter.get('/:foodId', authorizationMiddleware, foodController.getFood);
+foodRouter.get('/', foodController.getAllFoods);
+foodRouter.get('/:foodId', foodController.getFood);
 foodRouter.put('/:foodId', adminMiddleware, foodController.editFood);

@@ -8,12 +8,15 @@ const LoginContext = createContext();
 export const LoginProvider = ({ children }) => {
     const [loggedUserId, setLoggedUserId] = useState("");
     const [loading, setLoading] = useState(false);
+    const [isNutri, setIsNutri] = useState(false);
     const navigate = useNavigate();
 
     const handleLogout = useCallback(() => {
         localStorage.clear();
         setLoggedUserId("");
         setAuthToken("");
+        setIsNutri(false);
+        setLoading(false);
         navigate("/login");
     }, [navigate]);
 
@@ -75,8 +78,10 @@ export const LoginProvider = ({ children }) => {
             handleLogout,
             loading,
             setLoading,
+            isNutri, 
+            setIsNutri,
         }),
-        [loggedUserId, handleLogin, handleLogout, loading]
+        [loggedUserId, handleLogin, handleLogout, loading, isNutri]
     );
 
     return (

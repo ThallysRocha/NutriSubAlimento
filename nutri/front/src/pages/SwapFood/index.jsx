@@ -12,7 +12,6 @@ const SwapFood = () => {
     const { loggedUserId} = useLogin();
     const [foods, setFoods] = useState([]);
     const [options, setOptions] = useState([]);
-    const [optionsRecomended, setOptionsRecomended] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false);
     const [selectedFoodName, setSelectedFoodName] = useState(null);
     const [newFoodName, setNewFoodName] = useState(null);
